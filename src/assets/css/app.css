@@ -1,0 +1,78 @@
+.fa, .far {
+	font-family: 'Font Awesome 5 Free', fa-regular-400;
+	font-weight: 400;
+}
+
+.fas {
+	font-family: 'Font Awesome 5 Free', fa-solid-900;
+	font-weight: 900;
+}
+
+.fab {
+	font-family: 'Font Awesome 5 Brands', fa-brands-400;
+	font-weight: 400;
+}
+
+.rammeto-one {
+	font-family: 'RammettoOne-Regular';
+}
+
+.fredoka-one {
+  font-family: 'FredokaOne-Regular';
+}
+
+.crayon-font {
+	font-family: 'CrayonCrumble';
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.bangers-font {
+	font-family: 'Bangers-Regular';
+}
+
+.bg-silver {
+  background-color: #606060;
+}
+
+.bg-dark {
+  background-color: #0c1a31;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.bg-silver {
+  background-color: #737373;
+}
+
+.bg-white {
+  background-color: #FFF;
+}
+
+.page {
+  background-color: #652cb3;
+  /* color: white; */
+}
+
+.standard-padding {
+  padding: 20;
+}
+
+.common-container {
+  border-color: white; 
+  border-radius: 20px; 
+  border-width: 3px; 
+  padding: 10;
+}
+
+.title {
+  font-size: 25;
+  color: white;
+}
+
+.subtitle {
+  font-size: 20;
+  color: white;
+}

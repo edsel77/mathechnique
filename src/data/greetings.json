@@ -1,0 +1,45 @@
+{
+  "correct": [
+    "Congratulations!",
+    "Nice one!",
+    "Good job!",
+    "Clever!"
+  ],
+  "incorrect": [
+    "Better luck next time.",
+    "Please try again.",
+    "Incorrect answer."
+  ],
+  "resultMessage": [
+    {
+      "factor": 0,
+      "message": "You failed the quiz.",
+      "messageColor": "green",
+      "scoreColor": "red"
+    },
+    {
+      "factor": 0.25,
+      "message": "You almost did it! Try again.",
+      "messageColor": "green",
+      "scoreColor": "red"
+    },
+    {
+      "factor": 0.5,
+      "message": "You passed the quiz.",
+      "messageColor": "green",
+      "scoreColor": "orange"
+    },
+    {
+      "factor": 0.75,
+      "message": "You passed the quiz with a high score.",
+      "messageColor": "green",
+      "scoreColor": "green"
+    },
+    {
+      "factor": 1,
+      "message": "You've got a perfect score!",
+      "messageColor": "green",
+      "scoreColor": "green"
+    }
+  ]
+}
