@@ -83,6 +83,7 @@ export default {
           backgroundColor: 'yellow',
           subCategoryList: [
             {
+              subCategoryId: 'INT-001',
               subCategoryName: 'Properties of Integers',
               textColor: 'black',
               backgroundColor: 'yellow',
@@ -90,6 +91,7 @@ export default {
               topicBackgroundColor: '#12cdd4'
             },
             {
+              subCategoryId: 'INT-002',
               subCategoryName: 'Operations of Integers',
               textColor: 'black',
               backgroundColor: 'yellow',
@@ -97,6 +99,7 @@ export default {
               topicBackgroundColor: '#12cdd4'
             },
             {
+              subCategoryId: 'INT-003',
               subCategoryName: 'Types of Integers',
               textColor: 'black',
               backgroundColor: 'yellow',
@@ -104,6 +107,7 @@ export default {
               topicBackgroundColor: '#12cdd4'
             },
             {
+              subCategoryId: 'INT-004',
               subCategoryName: 'Rules of Integers',
               textColor: 'black',
               backgroundColor: 'yellow',
@@ -119,16 +123,19 @@ export default {
           backgroundColor: 'orange',
           subCategoryList: [
             {
+              subCategoryId: 'INT-001',
               subCategoryName: 'Conditional Probability',
               textColor: 'black',
               backgroundColor: 'orange',
             },
             {
+              subCategoryId: 'INT-001',
               subCategoryName: 'Binomial Theorem',
               textColor: 'black',
               backgroundColor: 'orange',
             },
             {
+              subCategoryId: 'INT-001',
               subCategoryName: 'Permutations and Combinations',
               textColor: 'black',
               backgroundColor: 'orange',

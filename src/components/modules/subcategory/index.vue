@@ -15,7 +15,7 @@
         <Label
           :text="data.categoryName"
           textWrap="true"
-          class="rammeto-one subtitle"
+          class="fredoka-one subtitle"
         />
       </StackLayout>
 
@@ -34,7 +34,7 @@
               <Label
                 :text="data.subCategoryName"
                 textWrap="true"
-                style="text-align: center; font-size: 25;"
+                style="text-align: center; font-size: 20;"
                 class="fredoka-one"
               />
             </StackLayout>

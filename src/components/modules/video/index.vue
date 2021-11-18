@@ -1,52 +1,52 @@
 <template>
   <Page
     :actionBarHidden="true"
-    class="page standard-padding"
+    class="page"
     :androidStatusBarBackground="themeColor"
   >
     <StackLayout>
-      <StackLayout orientation="horizontal">
-        <StackLayout style="height: 10%; width: 80%;" orientation="horizontal">
-          <Label
-            text.decode="&#xf104;"
-            textWrap="true"
-            style="font-size: 30; color: gray; margin-right: 10; margin-top: 2;"
-            class="fas"
-            @tap="back"
-          />
-          <Label
-            :text="data.subCategoryName"
-            textWrap="true"
-            class="rammeto-one subtitle"
-          />
-        </StackLayout>
+      <StackLayout
+        style="height: 15%;"
+        orientation="horizontal"
+        class="standard-padding"
+        @tap="back"
+      >
         <Label
-          text.decode="&#xf091;"
+          text.decode="&#xf104;"
           textWrap="true"
-          style="text-align: right; font-size: 40; color: #fac61f; width: 20%;"
+          style="font-size: 30; color: gray; margin-right: 10; margin-top: 2;"
           class="fas"
+        />
+        <Label
+          :text="`${data.subCategoryName} > Video Tutorial`"
+          textWrap="true"
+          class="fredoka-one subtitle"
         />
       </StackLayout>
 
-      <ScrollView style="height: 90%">
-        <StackLayout style="margin-top: 10">
-          <StackLayout
-            style="padding-top: 20; padding-bottom;"
-            v-for="(data, i) in topicList"
-            :key="i"
-            @tap="goToTopic(data)"
-          >
+      <ScrollView style="height: 85%">
+        <StackLayout style="margin-top: 1">
+          <StackLayout v-for="(data, i) in lesson" :key="i">
             <StackLayout
-              style="border-radius: 10; padding: 20;"
-              :style="{ backgroundColor: topicBackgroundColor }"
+              v-if="data.type === 'string'"
+              :style="{
+                backgroundColor: data.backgroundColor,
+                color: data.textColor
+              }"
+              style="padding: 10"
             >
               <Label
-                :text="data.topicName"
+                :text="data.data"
                 textWrap="true"
-                style="text-align: center; font-size: 25;"
-                class="fredoka-one"
+                :class="{ 'crayon-font': data.crayonFont }"
+                style="font-size: 25px;"
               />
             </StackLayout>
+            <Image
+              v-else-if="data.type === 'image'"
+              :src="`~/data/images/lessons/${data.data}`"
+              stretch="aspectFit"
+            />
           </StackLayout>
         </StackLayout>
       </ScrollView>
@@ -56,7 +56,7 @@
 <script>
 import { mapMutations, mapGetters } from 'vuex';
 export default {
-  name: 'Topic',
+  name: 'Lesson',
 
   props: {
     data: {
@@ -67,19 +67,84 @@ export default {
 
   data() {
     return {
-      topicBackgroundColor: '',
-      topicList: [
+      subCategoryId: 'INT-001',
+      lesson: [
         {
-          id: 'lesson',
-          topicName: 'Lesson'
+          type: 'string',
+          data: 'Properties of Integers',
+          backgroundColor: 'green',
+          textColor: 'white',
+          crayonFont: true
         },
         {
-          id: 'video',
-          topicName: 'Video Tutorial'
+          type: 'image',
+          data: '/integers/lesson-integer-1.png'
         },
         {
-          id: 'quiz',
-          topicName: 'Activities'
+          type: 'string',
+          data: 'This is additional notes.',
+          backgroundColor: 'green',
+          textColor: 'white',
+          crayonFont: true
+        },
+        {
+          type: 'image',
+          data: '/integers/lesson-integer-2.png'
+        },
+        {
+          type: 'string',
+          data: 'You can change the background color and text color also.',
+          backgroundColor: 'orange',
+          textColor: 'black',
+          crayonFont: true
+        },
+        {
+          type: 'string',
+          data: 'Disable the crayon font.',
+          backgroundColor: 'orange',
+          textColor: 'black',
+          crayonFont: false
+        },
+        {
+          type: 'image',
+          data: '/integers/lesson-integer-3.png'
+        },
+        {
+          type: 'image',
+          data: '/integers/lesson-integer-4.png'
+        },
+        {
+          type: 'string',
+          data: 'Explanation here.',
+          backgroundColor: 'green',
+          textColor: 'white',
+          crayonFont: true
+        },
+        {
+          type: 'image',
+          data: '/integers/lesson-integer-5.png'
+        },
+        {
+          type: 'image',
+          data: '/integers/lesson-integer-6.png'
+        },
+        {
+          type: 'string',
+          data: 'More explanations and additonal notes from the above discussions.',
+          backgroundColor: 'green',
+          textColor: 'white',
+          crayonFont: true
+        },
+        {
+          type: 'image',
+          data: '/integers/lesson-integer-7.png'
+        },
+        {
+          type: 'string',
+          data: 'This is the summary of the lesson. You can put as much as many text here.',
+          backgroundColor: 'green',
+          textColor: 'white',
+          crayonFont: true
         }
       ]
     };
