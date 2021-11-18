@@ -26,7 +26,7 @@
 
       <ScrollView style="height: 85%">
         <StackLayout style="margin-top: 1">
-          <StackLayout v-for="(data, i) in lesson" :key="i">
+          <StackLayout v-for="(data, i) in lesson.lesson" :key="i">
             <StackLayout
               v-if="data.type === 'string'"
               :style="{
@@ -55,6 +55,8 @@
 </template>
 <script>
 import { mapMutations, mapGetters } from 'vuex';
+import Lessons from '~/data/lessons.json';
+import _ from 'lodash';
 export default {
   name: 'Lesson',
 
@@ -67,91 +69,19 @@ export default {
 
   data() {
     return {
-      subCategoryId: 'INT-001',
-      lesson: [
-        {
-          type: 'string',
-          data: 'Properties of Integers',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-1.png'
-        },
-        {
-          type: 'string',
-          data: 'This is additional notes.',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-2.png'
-        },
-        {
-          type: 'string',
-          data: 'You can change the background color and text color also.',
-          backgroundColor: 'orange',
-          textColor: 'black',
-          crayonFont: true
-        },
-        {
-          type: 'string',
-          data: 'Disable the crayon font.',
-          backgroundColor: 'orange',
-          textColor: 'black',
-          crayonFont: false
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-3.png'
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-4.png'
-        },
-        {
-          type: 'string',
-          data: 'Explanation here.',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-5.png'
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-6.png'
-        },
-        {
-          type: 'string',
-          data: 'More explanations and additonal notes from the above discussions.',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-7.png'
-        },
-        {
-          type: 'string',
-          data: 'This is the summary of the lesson. You can put as much as many text here.',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        }
-      ]
+      Lessons,
+      lesson: ''
     };
   },
 
   created() {
     this.topicBackgroundColor = this.data.topicBackgroundColor;
+    let data = _.find(Lessons, {
+      subCategoryId: this.data.subCategoryId
+    });
+    if (data) {
+      this.lesson = data;
+    }
   },
 
   methods: {

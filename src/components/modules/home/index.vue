@@ -40,7 +40,6 @@
       </StackLayout>
 
       <ScrollView style="height: 90%">
-        
         <WrapLayout style="margin-top: 20">
           <StackLayout
             style="width: 50%; padding: 10;"
@@ -48,7 +47,10 @@
             :key="i"
             @tap="goToSubcategory(data)"
           >
-            <StackLayout style="border-radius: 10; padding: 10;" :style="{ backgroundColor: data.backgroundColor }">
+            <StackLayout
+              style="border-radius: 10; padding: 10;"
+              :style="{ backgroundColor: data.backgroundColor }"
+            >
               <Image
                 v-if="data.icon"
                 :src="`~/data/images/${data.icon}`"
@@ -59,7 +61,12 @@
                 :src="`~/assets/images/icon.png`"
                 style="text-align: center; height: 90;"
               />
-              <Label :text="data.categoryName" textWrap="true" style="text-align: center; font-size: 25;" class="bangers-font" />
+              <Label
+                :text="data.categoryName"
+                textWrap="true"
+                style="text-align: center; font-size: 25;"
+                class="bangers-font"
+              />
             </StackLayout>
           </StackLayout>
         </WrapLayout>
@@ -69,107 +76,43 @@
 </template>
 <script>
 import { mapMutations, mapGetters } from 'vuex';
+import CategoryList from '~/data/categoryList.json';
+import _ from 'lodash';
 export default {
   name: 'Home',
 
   data() {
     return {
       search: '',
-      categoryList: [
-        {
-          categoryName: 'Integers',
-          icon: 'integers.png',
-          textColor: 'black',
-          backgroundColor: 'yellow',
-          subCategoryList: [
-            {
-              subCategoryId: 'INT-001',
-              subCategoryName: 'Properties of Integers',
-              textColor: 'black',
-              backgroundColor: 'yellow',
-              topicTextColor: 'black',
-              topicBackgroundColor: '#12cdd4'
-            },
-            {
-              subCategoryId: 'INT-002',
-              subCategoryName: 'Operations of Integers',
-              textColor: 'black',
-              backgroundColor: 'yellow',
-              topicTextColor: 'black',
-              topicBackgroundColor: '#12cdd4'
-            },
-            {
-              subCategoryId: 'INT-003',
-              subCategoryName: 'Types of Integers',
-              textColor: 'black',
-              backgroundColor: 'yellow',
-              topicTextColor: 'black',
-              topicBackgroundColor: '#12cdd4'
-            },
-            {
-              subCategoryId: 'INT-004',
-              subCategoryName: 'Rules of Integers',
-              textColor: 'black',
-              backgroundColor: 'yellow',
-              topicTextColor: 'black',
-              topicBackgroundColor: '#12cdd4'
-            }
-          ]
-        },
-        {
-          categoryName: 'Probability',
-          icon: 'probability.png',
-          textColor: 'black',
-          backgroundColor: 'orange',
-          subCategoryList: [
-            {
-              subCategoryId: 'INT-001',
-              subCategoryName: 'Conditional Probability',
-              textColor: 'black',
-              backgroundColor: 'orange',
-            },
-            {
-              subCategoryId: 'INT-001',
-              subCategoryName: 'Binomial Theorem',
-              textColor: 'black',
-              backgroundColor: 'orange',
-            },
-            {
-              subCategoryId: 'INT-001',
-              subCategoryName: 'Permutations and Combinations',
-              textColor: 'black',
-              backgroundColor: 'orange',
-            }
-          ]
-        },
-        {
-          categoryName: 'Calculus',
-          icon: 'calculus.png',
-          textColor: 'white',
-          backgroundColor: 'pink',
-        },
-        {
-          categoryName: 'Geometry',
-          icon: '',
-          textColor: 'white',
-          backgroundColor: '#12cdd4',
-        }
-      ]
+      CategoryList,
+      categoryList: ''
     };
   },
 
-  created() {},
+  created() {
+    this.categoryList = _.cloneDeep(CategoryList);
+  },
+
+  watch: {
+    search(val) {
+      if (val.length > 0) {
+        this.categoryList = _.filter(this.CategoryList, (res) => {
+          return res.categoryName.toLowerCase().includes(val.toLowerCase());
+        });
+      } else {
+        this.categoryList = _.cloneDeep(this.CategoryList);
+      }
+    }
+  },
 
   methods: {
     goToSubcategory(data) {
       this.route('/subcategory', {
         data
       });
-    },
+    }
   }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

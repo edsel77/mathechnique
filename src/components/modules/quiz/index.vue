@@ -5,11 +5,28 @@
     :androidStatusBarBackground="themeColor"
   >
     <StackLayout>
-      <StackLayout style="height: 10%">
-        <Label text="Quiz" textWrap="true" class="rammeto-one title" />
+      <StackLayout style="height: 15%;" orientation="horizontal" @tap="back">
+        <Label
+          text.decode="&#xf104;"
+          textWrap="true"
+          style="font-size: 30; color: gray; margin-right: 10; margin-top: 2;"
+          class="fas"
+        />
+        <Label
+          :text="`${data.subCategoryName} > Activities`"
+          textWrap="true"
+          class="fredoka-one subtitle"
+        />
       </StackLayout>
       <ScrollView style="height: 90%">
-        <StackLayout>
+        <StackLayout v-if="!activeQuestion" verticalAlignment="center">
+          <Label
+            text="No data for this quiz."
+            textWrap="true"
+            style="text-align: center; font-size: 17; color: white;"
+          />
+        </StackLayout>
+        <StackLayout v-else>
           <StackLayout
             class="common-container"
             :class="{ 'crayon-font': activeQuestion.chalkFont }"
@@ -69,14 +86,22 @@
 </template>
 <script>
 import { mapMutations, mapGetters } from 'vuex';
-import questions from '~/data/questionBank.json';
+import Questions from '~/data/questionBank.json';
 import Correct from './greetings.vue';
 export default {
   name: 'Quiz',
 
+  props: {
+    data: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+
   data() {
     return {
-      questions,
+      Questions,
+      questions: '',
       questionNumber: 1,
       activeQuestion: '',
       score: 0
@@ -84,7 +109,13 @@ export default {
   },
 
   created() {
-    this.activeQuestion = this.questions[this.questionNumber - 1];
+    let data = _.find(Questions, {
+      subCategoryId: this.data.subCategoryId
+    });
+    if (data) {
+      this.questions = data.questions;
+      this.activeQuestion = this.questions[this.questionNumber - 1];
+    }
   },
 
   computed: {

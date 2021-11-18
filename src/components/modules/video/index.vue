@@ -24,9 +24,20 @@
         />
       </StackLayout>
 
-      <ScrollView style="height: 85%">
-        <StackLayout style="margin-top: 1">
-          <StackLayout v-for="(data, i) in lesson" :key="i">
+      <StackLayout style="height: 30%; background-color: white;">
+        <VideoPlayer
+          :src="`~/data/videos/${videoTutorial.path}`"
+          autoplay="true"
+          controls="true"
+          height="250"
+          :fill="true"
+          ref="videoPlayer"
+        ></VideoPlayer>
+      </StackLayout>
+
+      <ScrollView style="height: 55%;">
+        <StackLayout>
+          <StackLayout v-for="(data, i) in videoTutorial.videoDescription" :key="i">
             <StackLayout
               v-if="data.type === 'string'"
               :style="{
@@ -42,11 +53,12 @@
                 style="font-size: 25px;"
               />
             </StackLayout>
-            <Image
-              v-else-if="data.type === 'image'"
-              :src="`~/data/images/lessons/${data.data}`"
-              stretch="aspectFit"
-            />
+            <StackLayout v-else-if="data.type === 'image'" style="background-color: white;">
+              <Image
+                :src="`~/data/images/lessons/${data.data}`"
+                stretch="aspectFit"
+              />
+            </StackLayout>
           </StackLayout>
         </StackLayout>
       </ScrollView>
@@ -55,8 +67,9 @@
 </template>
 <script>
 import { mapMutations, mapGetters } from 'vuex';
+import VideoTutorial from '~/data/videoTutorial.json';
 export default {
-  name: 'Lesson',
+  name: 'Video Tutorial',
 
   props: {
     data: {
@@ -67,91 +80,23 @@ export default {
 
   data() {
     return {
-      subCategoryId: 'INT-001',
-      lesson: [
-        {
-          type: 'string',
-          data: 'Properties of Integers',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-1.png'
-        },
-        {
-          type: 'string',
-          data: 'This is additional notes.',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-2.png'
-        },
-        {
-          type: 'string',
-          data: 'You can change the background color and text color also.',
-          backgroundColor: 'orange',
-          textColor: 'black',
-          crayonFont: true
-        },
-        {
-          type: 'string',
-          data: 'Disable the crayon font.',
-          backgroundColor: 'orange',
-          textColor: 'black',
-          crayonFont: false
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-3.png'
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-4.png'
-        },
-        {
-          type: 'string',
-          data: 'Explanation here.',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-5.png'
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-6.png'
-        },
-        {
-          type: 'string',
-          data: 'More explanations and additonal notes from the above discussions.',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        },
-        {
-          type: 'image',
-          data: '/integers/lesson-integer-7.png'
-        },
-        {
-          type: 'string',
-          data: 'This is the summary of the lesson. You can put as much as many text here.',
-          backgroundColor: 'green',
-          textColor: 'white',
-          crayonFont: true
-        }
-      ]
+      VideoTutorial,
+      videoTutorial: ''
     };
   },
 
   created() {
     this.topicBackgroundColor = this.data.topicBackgroundColor;
+    let data = _.find(VideoTutorial, {
+      subCategoryId: this.data.subCategoryId
+    });
+    if (data) {
+      this.videoTutorial = data;
+    }
+  },
+
+  beforeDestroy() {
+    this.$refs.videoPlayer.nativeView.pause();
   },
 
   methods: {

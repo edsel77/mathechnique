@@ -38,6 +38,11 @@ Vue.registerElement(
 import { Gif } from 'nativescript-gif';
 Vue.registerElement('Gif', () => Gif);
 
+Vue.registerElement(
+  'VideoPlayer',
+  () => require('@nstudio/nativescript-exoplayer').Video
+);
+
 new Vue({
   store,
   render: (h) =>

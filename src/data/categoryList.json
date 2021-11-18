@@ -1,0 +1,82 @@
+[
+  {
+    "categoryName": "Integers",
+    "icon": "integers.png",
+    "textColor": "black",
+    "backgroundColor": "yellow",
+    "subCategoryList": [
+      {
+        "subCategoryId": "INT-001",
+        "subCategoryName": "Properties of Integers",
+        "textColor": "black",
+        "backgroundColor": "yellow",
+        "topicTextColor": "black",
+        "topicBackgroundColor": "#12cdd4"
+      },
+      {
+        "subCategoryId": "INT-002",
+        "subCategoryName": "Operations of Integers",
+        "textColor": "black",
+        "backgroundColor": "yellow",
+        "topicTextColor": "black",
+        "topicBackgroundColor": "#12cdd4"
+      },
+      {
+        "subCategoryId": "INT-003",
+        "subCategoryName": "Types of Integers",
+        "textColor": "black",
+        "backgroundColor": "yellow",
+        "topicTextColor": "black",
+        "topicBackgroundColor": "#12cdd4"
+      },
+      {
+        "subCategoryId": "INT-004",
+        "subCategoryName": "Rules of Integers",
+        "textColor": "black",
+        "backgroundColor": "yellow",
+        "topicTextColor": "black",
+        "topicBackgroundColor": "#12cdd4"
+      }
+    ]
+  },
+  {
+    "categoryName": "Probability",
+    "icon": "probability.png",
+    "textColor": "black",
+    "backgroundColor": "orange",
+    "subCategoryList": [
+      {
+        "subCategoryId": "INT-001",
+        "subCategoryName": "Conditional Probability",
+        "textColor": "black",
+        "backgroundColor": "orange"
+      },
+      {
+        "subCategoryId": "INT-001",
+        "subCategoryName": "Binomial Theorem",
+        "textColor": "black",
+        "backgroundColor": "orange"
+      },
+      {
+        "subCategoryId": "INT-001",
+        "subCategoryName": "Permutations and Combinations",
+        "textColor": "black",
+        "backgroundColor": "orange"
+      }
+    ]
+  },
+  {
+    "categoryName": "Calculus",
+    "icon": "calculus.png",
+    "textColor": "white",
+    "backgroundColor": "pink",
+    "subCategoryList": []
+  },
+  {
+    "categoryName": "Geometry",
+    "icon": "",
+    "textColor": "white",
+    "backgroundColor": "#12cdd4",
+    "subCategoryList": []
+  }
+]
