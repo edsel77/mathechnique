@@ -5,7 +5,11 @@
     :androidStatusBarBackground="themeColor"
   >
     <StackLayout>
-      <StackLayout style="height: 15%;" orientation="horizontal" @tap="back">
+      <StackLayout
+        orientation="horizontal"
+        @tap="back"
+        style="margin-bottom: 15"
+      >
         <Label
           text.decode="&#xf104;"
           textWrap="true"
@@ -20,61 +24,40 @@
       </StackLayout>
       <ScrollView style="height: 90%">
         <StackLayout v-if="!activeQuestion" verticalAlignment="center">
-          <Label
+          <!-- <Label
             text="No data for this quiz."
             textWrap="true"
-            style="text-align: center; font-size: 17; color: white;"
-          />
+            style="text-align: center; font-size: 17; color: black;"
+          /> -->
         </StackLayout>
-        <StackLayout v-else>
-          <StackLayout
-            class="common-container"
-            :class="{ 'crayon-font': activeQuestion.chalkFont }"
-            :style="{
-              backgroundColor: activeQuestion.backgroundColor,
-              color: activeQuestion.fontColor
-            }"
-          >
+        <StackLayout v-else verticalAlignment="top">
+          <StackLayout>
             <Label
               :text="`Question: ${questionNumber}/${totalItems}`"
               textWrap="true"
-              style="font-weight: bold;"
+              style="font-weight: bold; font-size: 20;"
             />
-            <StackLayout v-for="(data, i) in activeQuestion.question" :key="i">
-              <Label
-                v-if="data.type === 'string'"
-                :text="data.data"
-                textWrap="true"
-              />
+            <StackLayout v-for="(item, i) in activeQuestion.question" :key="i">
               <Image
-                v-if="data.type === 'image'"
-                :src="`~/data/images/${data.data}`"
+                :src="
+                  `~/data/images/topics/${data.categoryId}/${data.subCategoryId}/${item.data}`
+                "
                 stretch="aspectFit"
               />
             </StackLayout>
           </StackLayout>
 
           <StackLayout style="margin-top: 20">
-            <StackLayout v-for="(data, i) in activeQuestion.choices" :key="i">
+            <StackLayout v-for="(item, i) in activeQuestion.choices" :key="i">
               <StackLayout
-                style="margin-bottom: 10; border-radius: 20px; border-width: 2px; padding: 10; text-align: center"
-                :style="{
-                  backgroundColor: data.backgroundColor,
-                  color: data.fontColor
-                }"
-                :class="{ 'crayon-font': data.chalkFont }"
-                @tap="selectAnswer(data)"
+                style="margin-bottom: 10; border-radius: 20px; text-align: center"
+                @tap="selectAnswer(item)"
               >
-                <Label
-                  v-if="data.type === 'string'"
-                  :text="data.data"
-                  textWrap="true"
-                />
                 <Image
-                  v-if="data.type === 'image'"
-                  :src="`~/data/images/${data.data}`"
+                  :src="
+                    `~/data/images/topics/${data.categoryId}/${data.subCategoryId}/${item.data}`
+                  "
                   stretch="aspectFit"
-                  style="height: 30"
                 />
               </StackLayout>
             </StackLayout>
@@ -86,8 +69,8 @@
 </template>
 <script>
 import { mapMutations, mapGetters } from 'vuex';
-import Questions from '~/data/questionBank.json';
 import Correct from './greetings.vue';
+import _ from 'lodash';
 export default {
   name: 'Quiz',
 
@@ -100,7 +83,6 @@ export default {
 
   data() {
     return {
-      Questions,
       questions: '',
       questionNumber: 1,
       activeQuestion: '',
@@ -109,13 +91,44 @@ export default {
   },
 
   created() {
-    let data = _.find(Questions, {
-      subCategoryId: this.data.subCategoryId
-    });
-    if (data) {
-      this.questions = data.questions;
-      this.activeQuestion = this.questions[this.questionNumber - 1];
+    let itemCount = 20;
+    this.questions = [];
+    for (let i = 0; i < itemCount; i++) {
+      this.questions.push({
+        questionId: i + 1,
+        question: [
+          {
+            type: 'image',
+            data: `ACTIVITY/${this.leadingZero(i + 1, 4)}-.jpg`
+          }
+        ],
+        choices: [
+          {
+            type: 'image',
+            data: `ACTIVITY/${this.leadingZero(i + 1, 4)}-option1.jpg`,
+            isCorrectAnswer: false
+          },
+          {
+            type: 'image',
+            data: `ACTIVITY/${this.leadingZero(i + 1, 4)}-option2.jpg`,
+            isCorrectAnswer: false
+          },
+          {
+            type: 'image',
+            data: `ACTIVITY/${this.leadingZero(i + 1, 4)}-option3.jpg`,
+            isCorrectAnswer: false
+          },
+          {
+            type: 'image',
+            data: `ACTIVITY/${this.leadingZero(i + 1, 4)}-answer.jpg`,
+            isCorrectAnswer: true
+          }
+        ]
+      });
     }
+    this.questions = _.shuffle(this.questions);
+    this.activeQuestion = this.questions[this.questionNumber - 1];
+    this.activeQuestion.choices = _.shuffle(this.activeQuestion.choices);
   },
 
   computed: {
@@ -130,33 +143,36 @@ export default {
         this.route(
           '/quiz/result',
           {
+            data: this.data,
             score: this.score,
             totalItems: this.totalItems,
-            category: this.activeQuestion.category,
-            subCategory: this.activeQuestion.subCategory
+            category: this.activeQuestion.category
           },
           true
         );
       } else {
         this.activeQuestion = this.questions[val - 1];
+        this.activeQuestion.choices = _.shuffle(this.activeQuestion.choices);
       }
     }
   },
 
   methods: {
     selectAnswer(data) {
+      if (data.isCorrectAnswer) {
+        this.score++;
+      }
+      this.activeQuestion = "";
+      let progress = (this.score / this.totalItems) * 100;
       this.$showModal(Correct, {
         fullscreen: true,
         props: {
-          data: data
+          data: data,
+          progress
         }
       }).then(() => {
         this.questionNumber++;
       });
-
-      if (data.isCorrectAnswer) {
-        this.score++;
-      }
     }
   }
 };

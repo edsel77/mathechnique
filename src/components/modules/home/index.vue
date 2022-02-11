@@ -7,34 +7,31 @@
     <StackLayout>
       <StackLayout>
         <GridLayout style="height: 10%">
-          <Label
-            text="MATHechnique"
-            textWrap="true"
-            class="rammeto-one title"
-          />
+          <Label :text="title" textWrap="true" class="rammeto-one title" />
           <Label
             text.decode="&#xf0c9;"
             textWrap="true"
-            style="text-align: right; font-size: 40; color: gray;"
+            style="text-align: right; font-size: 40; color: black;"
             class="fas"
+            @tap="route('/menu')"
           />
         </GridLayout>
         <StackLayout
           orientation="horizontal"
-          style="background-color: white; border-radius: 5;"
+          style="background-color: white; border-radius: 10;"
         >
-          <StackLayout style="padding-top: 10; padding-left: 11;">
+          <StackLayout style="padding-top: 15; padding-left: 11;">
             <Label
               text.decode="&#xf002;"
               class="fas"
               textWrap="true"
-              style="font-size: 30;"
+              style="font-size: 20; margin-top: 3;"
             />
           </StackLayout>
           <TextField
             v-model="search"
             hint="Search"
-            style="padding: 10; font-weight: bold; color: gray; height: 50; border-bottom-width: 0; font-size: 20px;"
+            style="padding: 10; font-weight: bold; color: gray; height: 60; border-bottom-width: 1; border-bottom-color: transparent; font-size: 20px; width: 100%;"
           />
         </StackLayout>
       </StackLayout>
@@ -47,25 +44,16 @@
             :key="i"
             @tap="goToSubcategory(data)"
           >
-            <StackLayout
-              style="border-radius: 10; padding: 10;"
-              :style="{ backgroundColor: data.backgroundColor }"
-            >
+            <StackLayout>
               <Image
                 v-if="data.icon"
-                :src="`~/data/images/${data.icon}`"
-                style="text-align: center; height: 90;"
+                :src="`~/data/images/app-icons/${data.icon}`"
+                style="text-align: center; border-radius: 10;"
               />
               <Image
                 v-else
-                :src="`~/assets/images/icon.png`"
-                style="text-align: center; height: 90;"
-              />
-              <Label
-                :text="data.categoryName"
-                textWrap="true"
-                style="text-align: center; font-size: 25;"
-                class="bangers-font"
+                :src="`~/assets/images/mathechnique-logo-500x500px.png`"
+                style="text-align: center; border-radius: 10;"
               />
             </StackLayout>
           </StackLayout>
@@ -91,6 +79,22 @@ export default {
 
   created() {
     this.categoryList = _.cloneDeep(CategoryList);
+  },
+
+  computed: {
+    ...mapGetters({
+      GET_MY_PROFILE: 'GET_MY_PROFILE'
+    }),
+
+    title() {
+      let title = 'MATHechnique';
+      if (this.GET_MY_PROFILE) {
+        if (this.GET_MY_PROFILE.firstName) {
+          title = `Hi ${this.GET_MY_PROFILE.firstName},`;
+        }
+      }
+      return title;
+    }
   },
 
   watch: {

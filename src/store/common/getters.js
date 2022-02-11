@@ -1,11 +1,4 @@
 export default {
-  getActiveRoom: state => {
-		return state.activeRoom
-	},
-
-	storedLightness: state => {
-		return state.storedLightness
-	},
-
-	GET_SELECTED_COLOR: (state) => state.selectedColor
+	GET_MY_PROFILE: (state) => state.myProfile,
+	GET_GAME_HISTORY: (state) => state.gameHistory
 };

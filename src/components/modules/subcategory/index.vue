@@ -5,7 +5,7 @@
     :androidStatusBarBackground="themeColor"
   >
     <StackLayout>
-      <StackLayout style="height: 7%" orientation="horizontal" @tap="back">
+      <StackLayout orientation="horizontal" @tap="back" style="margin-bottom: 15">
         <Label
           text.decode="&#xf104;"
           textWrap="true"
@@ -29,12 +29,12 @@
           >
             <StackLayout
               style="border-radius: 10; padding: 20;"
-              :style="{ backgroundColor: data.backgroundColor }"
+              :style="{ backgroundColor: themeColor }"
             >
               <Label
                 :text="data.subCategoryName"
                 textWrap="true"
-                style="text-align: center; font-size: 20;"
+                style="text-align: center; font-size: 20; color: black;"
                 class="fredoka-one"
               />
             </StackLayout>
@@ -59,7 +59,9 @@ export default {
   methods: {
     goToTopic(data) {
       this.route('/topic', {
-        data
+        data,
+        categoryName: this.data.categoryName,
+        categoryId: this.data.categoryId,
       });
     }
   }

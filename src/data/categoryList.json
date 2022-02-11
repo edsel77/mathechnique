@@ -1,82 +1,99 @@
 [
   {
-    "categoryName": "Integers",
-    "icon": "integers.png",
-    "textColor": "black",
-    "backgroundColor": "yellow",
+    "categoryName": "Operation on Integers",
+    "categoryId": "TOPIC-INTEGERS",
+    "icon": "1.png",
     "subCategoryList": [
       {
-        "subCategoryId": "INT-001",
-        "subCategoryName": "Properties of Integers",
-        "textColor": "black",
-        "backgroundColor": "yellow",
-        "topicTextColor": "black",
-        "topicBackgroundColor": "#12cdd4"
+        "subCategoryId": "TOPIC-INTEGERS-001",
+        "subCategoryName": "Addition and Subtraction"
       },
       {
-        "subCategoryId": "INT-002",
-        "subCategoryName": "Operations of Integers",
-        "textColor": "black",
-        "backgroundColor": "yellow",
-        "topicTextColor": "black",
-        "topicBackgroundColor": "#12cdd4"
+        "subCategoryId": "TOPIC-INTEGERS-002",
+        "subCategoryName": "Multiplication and Division"
       },
       {
-        "subCategoryId": "INT-003",
-        "subCategoryName": "Types of Integers",
-        "textColor": "black",
-        "backgroundColor": "yellow",
-        "topicTextColor": "black",
-        "topicBackgroundColor": "#12cdd4"
-      },
-      {
-        "subCategoryId": "INT-004",
-        "subCategoryName": "Rules of Integers",
-        "textColor": "black",
-        "backgroundColor": "yellow",
-        "topicTextColor": "black",
-        "topicBackgroundColor": "#12cdd4"
+        "subCategoryId": "TOPIC-INTEGERS-003",
+        "subCategoryName": "Properties of Addition and Multiplication"
       }
     ]
   },
   {
-    "categoryName": "Probability",
-    "icon": "probability.png",
-    "textColor": "black",
-    "backgroundColor": "orange",
+    "categoryName": "Rational Numbers",
+    "categoryId": "TOPIC-RATIONAL",
+    "icon": "2.png",
     "subCategoryList": [
       {
-        "subCategoryId": "INT-001",
-        "subCategoryName": "Conditional Probability",
-        "textColor": "black",
-        "backgroundColor": "orange"
+        "subCategoryId": "TOPIC-RATIONAL-001",
+        "subCategoryName": "Rational Numbers"
       },
       {
-        "subCategoryId": "INT-001",
-        "subCategoryName": "Binomial Theorem",
-        "textColor": "black",
-        "backgroundColor": "orange"
-      },
-      {
-        "subCategoryId": "INT-001",
-        "subCategoryName": "Permutations and Combinations",
-        "textColor": "black",
-        "backgroundColor": "orange"
+        "subCategoryId": "TOPIC-RATIONAL-002",
+        "subCategoryName": "Fundamental Operations on Rational Numbers"
       }
     ]
   },
   {
-    "categoryName": "Calculus",
-    "icon": "calculus.png",
-    "textColor": "white",
-    "backgroundColor": "pink",
-    "subCategoryList": []
+    "categoryName": "Polynomials",
+    "categoryId": "TOPIC-POLYNOMIALS",
+    "icon": "3.png",
+    "subCategoryList": [
+      {
+        "subCategoryId": "TOPIC-POLYNOMIALS-001",
+        "subCategoryName": "Addition and Subtraction of Polynomials"
+      },
+      {
+        "subCategoryId": "TOPIC-POLYNOMIALS-002",
+        "subCategoryName": "Multiplication and Division of Polynomials"
+      }
+    ]
   },
   {
-    "categoryName": "Geometry",
-    "icon": "",
-    "textColor": "white",
-    "backgroundColor": "#12cdd4",
-    "subCategoryList": []
+    "categoryName": "Special Products",
+    "categoryId": "TOPIC-SPECIAL",
+    "icon": "4.png",
+    "subCategoryList": [
+      {
+        "subCategoryId": "TOPIC-SPECIAL-001",
+        "subCategoryName": "Special Products"
+      }
+    ]
+  },
+  {
+    "categoryName": "Algebraic Expression and Equations",
+    "categoryId": "TOPIC-ALGEBRAIC",
+    "icon": "5.png",
+    "subCategoryList": [
+      {
+        "subCategoryId": "TOPIC-ALGEBRAIC-001",
+        "subCategoryName": "Algebraic Expressions and Equations"
+      }
+    ]
+  },
+  {
+    "categoryName": "Properties of Equality and Inequality",
+    "categoryId": "TOPIC-EQUALITY",
+    "icon": "6.png",
+    "subCategoryList": [
+      {
+        "subCategoryId": "TOPIC-EQUALITY-001",
+        "subCategoryName": "Properties of Equality"
+      },
+      {
+        "subCategoryId": "TOPIC-EQUALITY-002",
+        "subCategoryName": "Properties of Inequality"
+      }
+    ]
+  },
+  {
+    "categoryName": "Linear Equations and Inequalities in One Variable",
+    "categoryId": "TOPIC-LINEAR",
+    "icon": "7.png",
+    "subCategoryList": [
+      {
+        "subCategoryId": "TOPIC-LINEAR-001",
+        "subCategoryName": "Linear Equations and Inequalities in One Variable"
+      }
+    ]
   }
 ]

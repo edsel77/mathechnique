@@ -52,8 +52,11 @@
 }
 
 .page {
-  background-color: #652cb3;
-  /* color: white; */
+  /* background-color: #652cb3; */
+  background-image: url('~/assets/images/background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .standard-padding {
@@ -69,10 +72,11 @@
 
 .title {
   font-size: 25;
-  color: white;
+  color: blue;
 }
 
 .subtitle {
-  font-size: 25;
-  color: white;
+  font-size: 18;
+  color: blue;
+  margin-top: 10px;
 }

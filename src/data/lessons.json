@@ -1,84 +1,50 @@
 [
   {
-    "subCategoryId": "INT-001",
-    "lesson": [
-      {
-        "type": "string",
-        "data": "Properties of Integers",
-        "backgroundColor": "green",
-        "textColor": "white",
-        "crayonFont": true
-      },
-      {
-        "type": "image",
-        "data": "/integers/lesson-integer-1.png"
-      },
-      {
-        "type": "string",
-        "data": "This is additional notes.",
-        "backgroundColor": "green",
-        "textColor": "white",
-        "crayonFont": true
-      },
-      {
-        "type": "image",
-        "data": "/integers/lesson-integer-2.png"
-      },
-      {
-        "type": "string",
-        "data": "You can change the background color and text color also.",
-        "backgroundColor": "orange",
-        "textColor": "black",
-        "crayonFont": true
-      },
-      {
-        "type": "string",
-        "data": "Disable the crayon font.",
-        "backgroundColor": "orange",
-        "textColor": "black",
-        "crayonFont": false
-      },
-      {
-        "type": "image",
-        "data": "/integers/lesson-integer-3.png"
-      },
-      {
-        "type": "image",
-        "data": "/integers/lesson-integer-4.png"
-      },
-      {
-        "type": "string",
-        "data": "Explanation here.",
-        "backgroundColor": "green",
-        "textColor": "white",
-        "crayonFont": true
-      },
-      {
-        "type": "image",
-        "data": "/integers/lesson-integer-5.png"
-      },
-      {
-        "type": "image",
-        "data": "/integers/lesson-integer-6.png"
-      },
-      {
-        "type": "string",
-        "data": "More explanations and additonal notes from the above discussions.",
-        "backgroundColor": "green",
-        "textColor": "white",
-        "crayonFont": true
-      },
-      {
-        "type": "image",
-        "data": "/integers/lesson-integer-7.png"
-      },
-      {
-        "type": "string",
-        "data": "This is the summary of the lesson. You can put as much as many text here.",
-        "backgroundColor": "green",
-        "textColor": "white",
-        "crayonFont": true
-      }
-    ]
+    "subCategoryId": "TOPIC-INTEGERS-001",
+    "lessonCount": 5
+  },
+  {
+    "subCategoryId": "TOPIC-INTEGERS-002",
+    "lessonCount": 3
+  },
+  {
+    "subCategoryId": "TOPIC-INTEGERS-003",
+    "lessonCount": 4
+  },
+  {
+    "subCategoryId": "TOPIC-RATIONAL-001",
+    "lessonCount": 9
+  },
+  {
+    "subCategoryId": "TOPIC-RATIONAL-002",
+    "lessonCount": 3
+  },
+  {
+    "subCategoryId": "TOPIC-ALGEBRAIC-001",
+    "lessonCount": 3
+  },
+  {
+    "subCategoryId": "TOPIC-EQUALITY-001",
+    "lessonCount": 4
+  },
+  {
+    "subCategoryId": "TOPIC-EQUALITY-002",
+    "lessonCount": 6
+  },
+  {
+    "subCategoryId": "TOPIC-LINEAR-001",
+    "lessonCount": 3
+  },
+  {
+    "subCategoryId": "TOPIC-POLYNOMIALS-001",
+    "lessonCount": 5
+  },
+  {
+    "subCategoryId": "TOPIC-POLYNOMIALS-002",
+    "lessonCount": 6
+  },
+  {
+    "subCategoryId": "TOPIC-SPECIAL-001",
+    "lessonCount": 5
   }
 ]

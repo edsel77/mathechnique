@@ -6,7 +6,6 @@
   >
     <StackLayout>
       <StackLayout
-        style="height: 15%;"
         orientation="horizontal"
         class="standard-padding"
         @tap="back"

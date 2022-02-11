@@ -6,7 +6,6 @@
   >
     <StackLayout>
       <StackLayout
-        style="height: 15%;"
         orientation="horizontal"
         class="standard-padding"
         @tap="back"
@@ -24,27 +23,13 @@
         />
       </StackLayout>
 
-      <ScrollView style="height: 85%">
+      <ScrollView style="height: 90%">
         <StackLayout style="margin-top: 1">
-          <StackLayout v-for="(data, i) in lesson.lesson" :key="i">
-            <StackLayout
-              v-if="data.type === 'string'"
-              :style="{
-                backgroundColor: data.backgroundColor,
-                color: data.textColor
-              }"
-              style="padding: 10"
-            >
-              <Label
-                :text="data.data"
-                textWrap="true"
-                :class="{ 'crayon-font': data.crayonFont }"
-                style="font-size: 25px;"
-              />
-            </StackLayout>
+          <StackLayout v-for="(item, i) in lessons" :key="i">
             <Image
-              v-else-if="data.type === 'image'"
-              :src="`~/data/images/lessons/${data.data}`"
+              :src="
+                `~/data/images/topics/${data.categoryId}/${data.subCategoryId}/LESSON/${item}`
+              "
               stretch="aspectFit"
             />
           </StackLayout>
@@ -70,7 +55,7 @@ export default {
   data() {
     return {
       Lessons,
-      lesson: ''
+      lessons: []
     };
   },
 
@@ -79,8 +64,11 @@ export default {
     let data = _.find(Lessons, {
       subCategoryId: this.data.subCategoryId
     });
+    this.lessons = [];
     if (data) {
-      this.lesson = data;
+      for (let i = 0; i < data.lessonCount; i++) {
+        this.lessons.push(this.leadingZero(i + 1, 4) + '.jpg');
+      }
     }
   },
 

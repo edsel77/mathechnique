@@ -5,6 +5,9 @@ import subcategoryRoute from './modules/subcategory'
 import topicRoute from './modules/topic'
 import lessonRoute from './modules/lesson'
 import videoRoute from './modules/video'
+import myProfileRoute from './modules/my-profile'
+import achievementsRoute from './modules/achievements'
+import aboutUsRoute from './modules/about-us'
 export default {
   ...homeRoute,
   ...menuRoute,
@@ -12,5 +15,8 @@ export default {
   ...subcategoryRoute,
   ...topicRoute,
   ...lessonRoute,
-  ...videoRoute
+  ...videoRoute,
+  ...myProfileRoute,
+  ...achievementsRoute,
+  ...aboutUsRoute
 }

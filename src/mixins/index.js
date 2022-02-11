@@ -5,14 +5,14 @@ import moment from 'moment';
 export const Mixin = {
   data() {
     return {
-      themeColor: '#652cb3'
+      themeColor: 'orange'
     };
   },
 
   computed: {
-    ...mapState([
-
-    ])
+    ...mapGetters({
+      GET_MY_PROFILE: 'GET_MY_PROFILE'
+    })
   },
 
   methods: {
@@ -31,5 +31,11 @@ export const Mixin = {
     back() {
       this.$navigator.back();
     },
+
+    leadingZero(num, size) {
+      num = num.toString();
+      while (num.length < size) num = '0' + num;
+      return num;
+    }
   }
 };

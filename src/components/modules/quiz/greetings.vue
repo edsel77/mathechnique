@@ -12,6 +12,25 @@
         style="text-align: center; font-size: 50; font-weight: bold; color: green"
         class="crayon-font"
       />
+      <StackLayout style="text-align: center; margin-top: 20;">
+        <GridLayout :columns="progressFormat" class="progressbar">
+          <StackLayout
+            col="0"
+            class="progressbar-value"
+            verticalAlignment="center"
+          >
+          </StackLayout>
+        </GridLayout>
+        <StackLayout>
+          <Label
+            v-show="displayProgress"
+            :text="`${progress.toFixed(0)}%`"
+            textWrap="false"
+            class="crayon-font"
+            style="font-size: 30px; color: black;"
+          />
+        </StackLayout>
+      </StackLayout>
     </StackLayout>
     <StackLayout verticalAlignment="center" v-else>
       <Gif src="~/assets/gifs/sorry.gif" height="300"></Gif>
@@ -21,6 +40,31 @@
         style="text-align: center; font-size: 50; font-weight: bold; color: red"
         class="crayon-font"
       />
+      <StackLayout style="text-align: center; margin-top: 20;">
+        <GridLayout :columns="progressFormat" class="progressbar">
+          <StackLayout
+            col="0"
+            class="progressbar-value"
+            verticalAlignment="center"
+          >
+            <Label
+              v-show="displayProgress"
+              textWrap="false"
+              class="crayon-font"
+              style="font-size: 15px; color: white;"
+            />
+          </StackLayout>
+        </GridLayout>
+        <StackLayout>
+          <Label
+            v-show="displayProgress"
+            :text="`${progress.toFixed(0)}%`"
+            textWrap="false"
+            class="crayon-font"
+            style="font-size: 30px; color: black;"
+          />
+        </StackLayout>
+      </StackLayout>
     </StackLayout>
   </Page>
 </template>
@@ -36,13 +80,20 @@ export default {
     data: {
       type: Object,
       required: true
+    },
+
+    progress: {
+      type: Number,
+      required: true
     }
   },
 
   data() {
     return {
       greetings,
-      message: ''
+      message: '',
+      progressFormat: '1*,99*',
+      displayProgress: false
     };
   },
 
@@ -51,6 +102,11 @@ export default {
       this.$modal.close();
       player.pause();
     }, 5000);
+
+    setTimeout(() => {
+      this.progressFormat = this.progress + '*,' + (100 - this.progress) + '*';
+      this.displayProgress = true;
+    }, 100);
 
     if (this.data.isCorrectAnswer) {
       this.message = this.greetings.correct[
@@ -69,13 +125,13 @@ export default {
       audioFile: `~/assets/tones/${audioFile}`,
       loop: false,
       completeCallback: function() {
-        console.log('finished playing');
+        // console.log('finished playing');
       },
       errorCallback: function(errorObject) {
-        console.log(JSON.stringify(errorObject));
+        // console.log(JSON.stringify(errorObject));
       },
       infoCallback: function(args) {
-        console.log(JSON.stringify(args));
+        // console.log(JSON.stringify(args));
       }
     };
 
@@ -91,4 +147,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.progressbar {
+  height: 40;
+  margin: 10;
+  border-radius: 10;
+  background: silver;
+}
+.progressbar-value {
+  background: green;
+  height: 35;
+  border-radius: 10;
+}
+</style>

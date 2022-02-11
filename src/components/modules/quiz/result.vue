@@ -7,7 +7,7 @@
     <GridLayout>
       <Gif src="~/assets/gifs/animated-balloons.gif" height="100%" />
       <StackLayout>
-        <StackLayout style="height: 10%" class="standard-padding">
+        <StackLayout style="height: 20%" class="standard-padding">
           <Label text="Result" textWrap="true" class="rammeto-one title" />
           <Label
             :text="`Score: ${score}/${totalItems}`"
@@ -16,7 +16,7 @@
             style="color: white; font-size: 25"
           />
         </StackLayout>
-        <ScrollView style="height: 75%">
+        <ScrollView style="height: 65%">
           <StackLayout verticalAlignment="center">
             <Label
               :text="message.message"
@@ -58,6 +58,12 @@ export default {
   name: 'QuizResult',
 
   props: {
+    data: {
+      type: Object,
+      required: true,
+      default: () => ({})
+    },
+
     score: {
       type: Number,
       required: true,
@@ -71,12 +77,6 @@ export default {
     },
 
     category: {
-      type: String,
-      required: true,
-      default: ''
-    },
-
-    subCategory: {
       type: String,
       required: true,
       default: ''
@@ -103,6 +103,25 @@ export default {
         break;
       }
     }
+
+    let playerName = 'Guest';
+    if (this.GET_MY_PROFILE) {
+      if (this.GET_MY_PROFILE.firstName) {
+        playerName = `${this.GET_MY_PROFILE.firstName} ${this.GET_MY_PROFILE.lastName}`;
+      }
+    }
+
+    this.UPDATE_GAME_HISTORY({
+      categoryId: this.category,
+      categoryName: this.data.categoryName,
+      subCategoryId: this.data.subCategoryId,
+      subCategoryName: this.data.subCategoryName,
+      score: this.score,
+      totalItems: this.totalItems,
+      rate: this.scoreRatio,
+      date: new Date(),
+      playerName
+    });
 
     const playerOptions = {
       audioFile: '~/assets/tones/clapping.mp3',
@@ -135,6 +154,10 @@ export default {
   },
 
   methods: {
+    ...mapMutations({
+      UPDATE_GAME_HISTORY: 'UPDATE_GAME_HISTORY'
+    }),
+
     goToHome() {
       player.pause();
       this.route('/home', {}, true);

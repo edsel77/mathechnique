@@ -7,7 +7,7 @@
     <StackLayout>
       <StackLayout orientation="horizontal">
         <StackLayout
-          style="height: 10%; width: 80%;"
+          style="width: 80%; margin-bottom: 15;"
           orientation="horizontal"
           @tap="back"
         >
@@ -28,6 +28,7 @@
           textWrap="true"
           style="text-align: right; font-size: 40; color: #fac61f; width: 20%;"
           class="fas"
+          @tap="showGameHistory"
         />
       </StackLayout>
 
@@ -41,12 +42,12 @@
           >
             <StackLayout
               style="border-radius: 10; padding: 20;"
-              :style="{ backgroundColor: topicBackgroundColor }"
+              :style="{ backgroundColor: themeColor }"
             >
               <Label
                 :text="data.topicName"
                 textWrap="true"
-                style="text-align: center; font-size: 20;"
+                style="text-align: center; font-size: 20; color: black;"
                 class="fredoka-one"
               />
             </StackLayout>
@@ -58,6 +59,7 @@
 </template>
 <script>
 import { mapMutations, mapGetters } from 'vuex';
+import GameHistory from './game-history';
 export default {
   name: 'Topic',
 
@@ -65,6 +67,16 @@ export default {
     data: {
       type: Object,
       default: () => ({})
+    },
+
+    categoryName: {
+      type: String,
+      default: ''
+    },
+
+    categoryId: {
+      type: String,
+      default: ''
     }
   },
 
@@ -97,7 +109,20 @@ export default {
       this.route(`/${data.id}`, {
         data: {
           ...this.data,
-          ...data
+          ...data,
+          ...{
+            categoryName: this.categoryName,
+            categoryId: this.categoryId
+          }
+        }
+      });
+    },
+
+    showGameHistory() {
+      this.$showModal(GameHistory, {
+        fullscreen: true,
+        props: {
+          data: this.data
         }
       });
     }
