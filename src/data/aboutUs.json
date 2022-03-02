@@ -1,13 +1,13 @@
 {
   "description": [
-    "Welcome to MATHechnique, your number one source for all things [product]. We're dedicated to providing you the very best of [product], with an emphasis on [store characteristic 1], [store characteristic 2], [store characteristic 3].",
-    "Founded in [year] by [founder name], MATHechnique has come a long way from its beginnings in [starting location]. When [founder name] first started out, [his/her/their] passion for [brand message - e.g. ['eco-friendly cleaning products'] drove them to start their own business.",
-    "We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us."
+    "Welcome to MATHechnique, a mobile application that will help you to master your skills in the basics of algebra as well as in solving algebra problems through the lessons, video tutorials, and exciting activities included in the app. We are dedicated to providing you with the very best learning materials available, so that you can learn anytime and anywhere at your own pace.",
+    "The application was created in 2021 by Rose Anne B. Dungan (roseannedungan01@gmail.com), Eleonor A. Padillo (elliepadillo16@gmail.com), Jamil C. Rejano (jamcuariorejano10@gmail.com), and Josephine V. Sinag (sinagjs01@gmail.com).MATHechnique has come a long way from its beginnings in Lucena City, Quezon Province, Philippines. When the researchers first started out, their passion was to create mobile learning tools that were both eco-friendly and user-friendly.",
+    "We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please do not hesitate to contact us."
   ],
   "researchers": [
     {
       "name": "The Reseachers",
-      "email": "support.mathechnique@gmail.com"
+      "email": ""
     }
   ]
 }

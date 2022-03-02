@@ -13,33 +13,87 @@
   "resultMessage": [
     {
       "factor": 0,
-      "message": "You failed the quiz.",
-      "messageColor": "green",
-      "scoreColor": "red"
+      "message": "Sorry you failed."
+    },
+    {
+      "factor": 0.05,
+      "message": "You almost failed."
+    },
+    {
+      "factor": 0.1,
+      "message": "Try again."
+    },
+    {
+      "factor": 0.15,
+      "message": "Better luck next time."
+    },
+    {
+      "factor": 0.2,
+      "message": "Nice try."
     },
     {
       "factor": 0.25,
-      "message": "You almost did it! Try again.",
-      "messageColor": "green",
-      "scoreColor": "red"
+      "message": "Keep going."
+    },
+    {
+      "factor": 0.3,
+      "message": "You failed keep trying!"
+    },
+    {
+      "factor": 0.35,
+      "message": "You failed keep trying!"
+    },
+    {
+      "factor": 0.4,
+      "message": "You failed keep trying!"
+    },
+    {
+      "factor": 0.45,
+      "message": "You almost passed the exam! Try again."
     },
     {
       "factor": 0.5,
-      "message": "You passed the quiz.",
-      "messageColor": "green",
-      "scoreColor": "orange"
+      "message": "You've passed the exam."
+    },
+    {
+      "factor": 0.55,
+      "message": "You've passed the exam."
+    },
+    {
+      "factor": 0.6,
+      "message": "You've passed the exam."
+    },
+    {
+      "factor": 0.65,
+      "message": "You've passed the exam."
+    },
+    {
+      "factor": 0.7,
+      "message": "Congrats! You've passed the exam!"
     },
     {
       "factor": 0.75,
-      "message": "You passed the quiz with a high score.",
-      "messageColor": "green",
-      "scoreColor": "green"
+      "message": "Nice one! You got a high score!"
+    },
+    {
+      "factor": 0.8,
+      "message": "Good Job! You got a high score!"
+    },
+    {
+      "factor": 0.85,
+      "message": "Great job! You got a high score!"
+    },
+    {
+      "factor": 0.9,
+      "message": "You did great with a high score!"
+    },
+    {
+      "factor": 0.95,
+      "message": "You almost got a perfect score!"
     },
     {
       "factor": 1,
-      "message": "You've got a perfect score!",
-      "messageColor": "green",
-      "scoreColor": "green"
+      "message": "Congratulations! You've got a perfect score!"
     }
   ]
 }

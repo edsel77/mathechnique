@@ -25,7 +25,7 @@
 
       <StackLayout style="height: 30%; background-color: white;">
         <VideoPlayer
-          :src="`~/data/videos/${videoTutorial.path}`"
+          :src="`~/data/images/topics/${data.categoryId}/${data.subCategoryId}/VIDEO/1.mp4`"
           autoplay="true"
           controls="true"
           height="250"
@@ -34,7 +34,7 @@
         ></VideoPlayer>
       </StackLayout>
 
-      <ScrollView style="height: 55%;">
+      <!-- <ScrollView style="height: 55%;">
         <StackLayout>
           <StackLayout v-for="(data, i) in videoTutorial.videoDescription" :key="i">
             <StackLayout
@@ -60,7 +60,7 @@
             </StackLayout>
           </StackLayout>
         </StackLayout>
-      </ScrollView>
+      </ScrollView> -->
     </StackLayout>
   </Page>
 </template>

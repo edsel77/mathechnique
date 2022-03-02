@@ -22,12 +22,12 @@
             :key="i"
             :text="item"
             textWrap="true"
-            style="font-size: 20px; color: white; margin-bottom: 15;"
+            style="font-size: 20px; color: black; margin-bottom: 15;"
           />
           <Label
             text="Sincerely,"
             textWrap="true"
-            style="font-size: 20px; color: white; margin-bottom: 15; color: white;"
+            style="font-size: 20px; color: black; margin-bottom: 15;"
           />
           <StackLayout
             v-for="(item, j) in aboutUs.researchers"
@@ -37,18 +37,18 @@
             <Label
               :text="item.name"
               textWrap="true"
-              style="font-weight: bold; font-size: 20; color: white;"
+              style="font-weight: bold; font-size: 20; color: black;"
             />
-            <Label
+            <!-- <Label
               :text="item.email"
               textWrap="true"
-              style="font-size: 20; color: white;"
-            />
+              style="font-size: 20; color: black;"
+            /> -->
           </StackLayout>
           <Label
             :text="`Version ${$build_version}`"
             textWrap="true"
-            style="margin-top: 30px; font-size: 18; color: white;"
+            style="margin-top: 30px; font-size: 18; color: black;"
           />
         </StackLayout>
       </ScrollView>

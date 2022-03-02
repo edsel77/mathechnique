@@ -8,7 +8,12 @@
       <Gif src="~/assets/gifs/animated-balloons.gif" height="100%" />
       <StackLayout>
         <StackLayout style="height: 20%" class="standard-padding">
-          <Label text="Result" textWrap="true" class="rammeto-one title" />
+          <Label
+            text="Result"
+            textWrap="true"
+            class="rammeto-one title"
+            style="color: black"
+          />
           <Label
             :text="`Score: ${score}/${totalItems}`"
             textWrap="true"
@@ -22,7 +27,7 @@
               :text="message.message"
               textWrap="true"
               style="text-align: center; font-size: 50; font-weight: bold;"
-              :style="{ color: message.messageColor }"
+              :style="{ color: messageColor }"
               class="crayon-font"
             />
             <StackLayout style="margin-top: 20;" verticalAlignment="center">
@@ -30,7 +35,7 @@
                 :text="`${score}/${totalItems}`"
                 textWrap="true"
                 style="text-align: center; font-size: 60; font-weight: bold;"
-                :style="{ color: message.scoreColor }"
+                :style="{ color: messageColor }"
                 class="bangers-font"
               />
             </StackLayout>
@@ -91,12 +96,7 @@ export default {
   },
 
   created() {
-    this.resultMessage = _.orderBy(
-      greetings.resultMessage,
-      ['factor'],
-      ['asc']
-    );
-
+    this.resultMessage = greetings.resultMessage;
     for (let i = 0; i < this.resultMessage.length; i++) {
       if (this.scoreRatio <= this.resultMessage[i].factor) {
         this.message = this.resultMessage[i];
@@ -150,6 +150,16 @@ export default {
   computed: {
     scoreRatio() {
       return this.score / this.totalItems;
+    },
+
+    messageColor() {
+      if (this.scoreRatio >= 0.75) {
+        return 'green';
+      } else if (this.scoreRatio >= 0.5) {
+        return 'orange';
+      } else {
+        return 'red';
+      }
     }
   },
 
